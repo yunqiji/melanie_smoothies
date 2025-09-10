@@ -14,7 +14,8 @@ st.write('The name of your smoothie will be',name_on_order)
 
 
 #If the line session = get_active_session() appears in your code two times, delete one of the lines. 
-session = get_active_session()
+cnx = st.connection("snowflake")  ##added for moving from SiS to SniS
+session = cnx.session() # old version is get_active_session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
